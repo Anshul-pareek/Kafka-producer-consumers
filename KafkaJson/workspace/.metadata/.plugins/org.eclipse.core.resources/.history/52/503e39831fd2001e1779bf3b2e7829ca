@@ -1,0 +1,5 @@
+package com.ebit.kafkaJson.kafkaconfig;
+
+public class KafkaConfig {
+
+}

@@ -1,0 +1,5 @@
+package com.ebit.jsonproducerCMD.kafkaConsumer;
+
+public class KafkaConsumer {
+
+}

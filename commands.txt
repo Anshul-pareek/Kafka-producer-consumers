@@ -1,0 +1,37 @@
+--Installation--
+1. Download kafka zip file from official website
+2. Extract file
+3. Start ZooKeeper 
+   [bin\windows\zookeeper-server-start.bat config\zookeeper.properties]
+4. Start Kafka Server
+   [bin\windows\kafka-server-start.bat config\server.properties]
+
+--kafka with console--
+1. Create new topics with kafka-topics
+   [bin\windows\kafka-topics.bat --create --topic user-topic --bootstrap-server loacalhost:9092]
+2. Produce message with kafka-console-producer
+   [bin\windows\kafka-console-producer.bat --topic topic --bootstrap-server localhost:9092]
+3. Consume the message with kafka-console-consumer
+   [bin\windows\kafka-console-consumer.bat --topic user-topic --from-beginning --bootstrap-server localhost:9092]
+
+-------Spring Boot--------
+--application properties--
+spring.kafka.consumer.bootstrap-servers: localhost:9092
+spring.kafka.consumer.group-id: myGroup [configure consumer with a unique id]s
+spring.kafka.consumer.auto-offset-reset: earliest [it specifies what to do if there is no offset in the beginning in spring]
+spring.kafka.consumer.key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+spring.kafka.consumer.value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+spring.kafka.producer.bootstrap-servers: localhost:9092
+spring.kafka.producer.key-serializer: org.apache.kafka.common.serialization.StringSerializer 
+spring.kafka.producer.value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+--[for json messages]- {only the properities with "value" term will change}
+spring.kafka.consumer.value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+spring.kafka.producer.value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+--[for json message}-{when our producer is command prompt and consumer is spring boot}
+spring.kafka.bootstrap-servers=localhost:9092
+spring.kafka.consumer.group-id=myGroup 
+spring.kafka.consumer.value-deserializer=org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+spring.kafka.consumer.properties.spring.deserializer.value.delegate.class=org.springframework.kafka.support.serializer.JsonDeserializer
+spring.kafka.consumer.properties.spring.json.value.default.type=com.ebit.jsonproducerCMD.model.User

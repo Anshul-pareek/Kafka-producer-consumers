@@ -1,0 +1,5 @@
+package com.ebit.producerCMD.kafkaconsumer;
+
+public class KafkaConsumer {
+
+}

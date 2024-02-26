@@ -1,0 +1,5 @@
+package com.ebit.kafkaJson.Jsoncontroller;
+
+public class JsonController {
+
+}

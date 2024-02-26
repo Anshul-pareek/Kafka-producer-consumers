@@ -1,0 +1,19 @@
+package com.ebit.jsonproducerCMD.kafkaConsumer;
+
+
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.stereotype.Service;
+import com.ebit.jsonproducerCMD.model.User;
+
+
+@Service
+public class KafkaConsumer {
+
+	
+	@KafkaListener(topics = "topic", groupId = "myGroup")
+	public void consume(User user) {
+		System.out.println(user);
+	}
+
+}
+
