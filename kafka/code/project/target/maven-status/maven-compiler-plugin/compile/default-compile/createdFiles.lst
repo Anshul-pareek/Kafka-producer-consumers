@@ -1,0 +1,4 @@
+com\ebit\project\ProjectApplication.class
+com\ebit\project\controller\Controller.class
+com\ebit\project\producerconfig\ProducerConfig.class
+com\ebit\project\config\KafkaConfig.class
